@@ -1,3 +1,5 @@
+/*eslint linebreak-style: ["error", "windows"]*/
+
 'use strict';
 
 const mongoose = require('mongoose');
@@ -19,6 +21,7 @@ const projectSchema = Schema({
 
 const Project = module.exports = mongoose.model('project', projectSchema);
 
+//JV - nice job adding this static method onto your model
 Project.findByIdAndAddTask = function(id, task, userId){
   debug('findByIdAndAddTask');
 

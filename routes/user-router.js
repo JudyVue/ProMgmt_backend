@@ -1,3 +1,5 @@
+/*eslint linebreak-style: ["error", "windows"]*/
+
 'use strict';
 
 const debug = require('debug')('promgmt:user-router');
@@ -13,11 +15,14 @@ const userRouter = module.exports = Router();
 userRouter.post('/api/signup', jsonParser, function(req, res, next) {
   debug('POST: /api/signup');
 
+  //just a style choice that you can extract boolean checks like this into their own variable, ie:
+  //const invalid = req.body.username === undefined || req.body.email === undefined || req.body.password === undefined
+
   if(req.body.username === undefined || req.body.email === undefined || req.body.password === undefined) return next(createError(400, 'Bad Request'));
 
 
   let password = req.body.password;
-  delete req.body.password;
+  delete req.body.password; //good job remembering to delete the password for security
 
   let user = new User(req.body);
   user.generatePasswordHash(password)

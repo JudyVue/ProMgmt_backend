@@ -1,3 +1,5 @@
+/*eslint linebreak-style: ["error", "windows"]*/
+
 'use strict';
 
 const superagent = require('superagent');
@@ -62,7 +64,7 @@ describe('Project Routes', function() {
     describe('with INVALID usage', () => {
       it('should respond with a 400 if the request body is invalid', done => {
         superagent.post(`${url}/api/org/${hooks.tempOrg._id}/project`)
-          .send({ desc: 'wooo' })
+          .send({ desc: 'wooo' }) //JV: lol
           .set({
             Authorization: `Bearer ${hooks.tempToken}`,
           })

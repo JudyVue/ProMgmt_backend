@@ -1,6 +1,7 @@
-'use strict';
+/*eslint linebreak-style: ["error", "windows"]*/
 
 'use strict';
+/*eslint linebreak-style: ["error", "windows"]*/
 
 const superagent = require('superagent');
 const server = require('../server.js');

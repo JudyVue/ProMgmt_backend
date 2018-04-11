@@ -1,3 +1,6 @@
+/*eslint linebreak-style: ["error", "windows"]*/
+
+//JV - all models look great!
 'use strict';
 
 const mongoose = require('mongoose');

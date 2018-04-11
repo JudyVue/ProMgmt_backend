@@ -1,3 +1,5 @@
+/*eslint linebreak-style: ["error", "windows"]*/
+
 'use strict';
 
 const debug = require('debug')('promgmt:task-router');
@@ -16,6 +18,7 @@ taskRouter.post('/api/project/:projectId/task', bearerAuth, jsonParser, function
   if(req.body.desc === undefined) return next(createError(400, 'bad request'));
 
   Project.findByIdAndAddTask(req.params.projectId, req.body, req.user._id)
+  //not a huge dealbreaker here, but I notice that there is inconsistent spacing with these "then blocks" compared to other files. Best to agree to a consistent style among a group and conform to that style. 
     .then( task => res.json(task))
     .catch(next);
 });
@@ -30,6 +33,7 @@ taskRouter.get('/api/task/:taskId', bearerAuth, function(req, res, next) {
 
 taskRouter.get('/api/task/', bearerAuth, function(req, res, next) {
   debug('GET: /api/task/');
+  //JV - TODO: If your front end needs this route, go ahead and complete it for front end project week
 
   next(createError(400, 'bad request'));
 });
@@ -50,7 +54,6 @@ taskRouter.put('/api/task/', bearerAuth, jsonParser, function(req, res, next) {
 
 taskRouter.delete('/api/task/:taskId', bearerAuth, function(req, res, next) {
   debug('DELETE: api/task/taskId');
-
   Task.findById(req.params.taskId)
     .then( task => {
       return Task.find({ projectId: task.projectId });

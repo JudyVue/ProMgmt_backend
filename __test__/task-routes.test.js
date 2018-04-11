@@ -1,4 +1,6 @@
 'use strict';
+/*eslint linebreak-style: ["error", "windows"]*/
+
 
 const superagent = require('superagent');
 const server = require('../server.js');
@@ -214,6 +216,7 @@ describe('Task Routes', function() {
           })
           .end((err, res) => {
             if(err) return done(err);
+            //JV - another good idea would be to do a check on your mock parent task to ensure you succsesfully deleted whatever subtask or dependency task you were trying to delete, i.e. check if your main parent task's subtask/dependency task array equals the expected result of how it should look after a deletion
             expect(res.status).toEqual(204);
             done();
           });
